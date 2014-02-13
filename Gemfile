@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'mysql2'
+gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails'
