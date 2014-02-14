@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
+  self.inheritance_column = nil
+
   attr_accessible :name, :years, :address, :city, :state, :zip, :school, :years, :type, :code, :email, :password, :password_confirmation 
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true
   validates :name, length: { maximum: 35 }

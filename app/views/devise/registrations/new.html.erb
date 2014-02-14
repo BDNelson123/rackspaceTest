@@ -9,7 +9,7 @@
       <br><br>
     </div>
 
-    <%= select_tag(:type, options_for_select([['Receptionist', 'Receptionist'], ['Owner', 'Owner'], ['Veterinarian', 'Veterinarian']], selected: :Receptionist )) %>
+    <%= f.select(:type, options_for_select([['Receptionist', 'Receptionist'], ['Owner', 'Owner'], ['Veterinarian', 'Veterinarian']], selected: :Receptionist )) %>
 
     <div id="codeOwner">
       <br>
