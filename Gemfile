@@ -8,6 +8,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'mysql2'
 gem 'devise'
+gem 'protected_attributes'
 
 group :test, :development do
   gem 'rspec-rails'
