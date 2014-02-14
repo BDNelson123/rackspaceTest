@@ -10,5 +10,6 @@
 Code.create(:type => 'Owner', :code => '112233')
 Code.create(:type => 'Receptionist', :code => '445566')
 Code.create(:type => 'Veterinarian', :code => '778899')
+Code.create(:type => 'Customer', :code => '123456')
 
 
