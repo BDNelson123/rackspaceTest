@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Seed Codes Table
+Code.create(:type => 'Owner', :code => '112233')
+Code.create(:type => 'Receptionist', :code => '445566')
+Code.create(:type => 'Veterinarian', :code => '778899')
+
+
