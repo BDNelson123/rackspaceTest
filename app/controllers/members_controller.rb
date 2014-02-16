@@ -14,4 +14,8 @@ class MembersController < ApplicationController
       @users = User.where(:type => "Owner")
     end
   end
+
+  def show
+    @user = User.where(:id => params['id']).first
+  end
 end
