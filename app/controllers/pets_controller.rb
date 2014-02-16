@@ -15,6 +15,7 @@ class PetsController < ApplicationController
   # GET /pets/new
   def new
     @pet = Pet.new
+    @customers = User.select("id,name").where(:type => "Customer")
   end
 
   # GET /pets/1/edit

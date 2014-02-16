@@ -15,6 +15,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
+    @customers = User.select("id,name").where(:type => "Customer")
   end
 
   # GET /appointments/1/edit
