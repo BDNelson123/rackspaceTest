@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140216181340) do
+ActiveRecord::Schema.define(version: 20140216190619) do
 
   create_table "appointments", force: true do |t|
     t.date    "date"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20140216181340) do
 
   add_index "codes", ["code"], name: "index_codes_on_code", unique: true, using: :btree
   add_index "codes", ["type"], name: "index_codes_on_type", unique: true, using: :btree
+
+  create_table "pets", force: true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "breed"
+    t.integer  "age"
+    t.integer  "weight"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
