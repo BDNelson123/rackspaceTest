@@ -3,7 +3,7 @@ class Pet < ActiveRecord::Base
 
   belongs_to :user
 
-  attr_accessible :name, :type, :breed, :age, :weight, :date
+  attr_accessible :name, :type, :breed, :age, :weight, :date, :customer
 
   validates :name, presence: true
   validates :name, length: { maximum: 35 }
@@ -13,7 +13,7 @@ class Pet < ActiveRecord::Base
   validates :breed, length: { maximum: 35 }
   validates :age, presence: true
   validates :weight, presence: true
-  validats :date, presence: true
+  validates :date, presence: true
 
   def type_is_dog_or_cat
     type == 'dog' || type == 'cat'
