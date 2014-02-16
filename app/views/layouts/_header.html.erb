@@ -1,0 +1,13 @@
+<!-- this is what owners can see -->
+<% if current_user.type == 'Owner' %>
+  <table width="500px" align="center">
+    <tr>
+      <td>Appointments</td>
+      <td>Customers</td>
+      <td>Owners</td>
+      <td>Pets</td>
+      <td>Veterinarians</td>
+      <td>Sign Out</td>
+    </tr>
+  </table>
+<% end %>
