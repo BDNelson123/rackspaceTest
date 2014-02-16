@@ -1,0 +1,27 @@
+<h1>Users</h1>
+
+<table>
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Address</b></td>
+    <td><b>City</b></td>
+    <td><b>State</b></td>
+    <td><b>Zip</b></td>
+    <td><b>Type</b></td>
+    <td><b>School</b></td>
+    <td><b>Years</b></td>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.address %></td>
+      <td><%= user.city %></td>
+      <td><%= user.state %></td>
+      <td><%= user.zip %></td>
+      <td><%= user.type %></td>
+      <td><%= user.school %></td>
+      <td><%= user.years %></td>
+    </tr>
+  <% end %>
+</table>
+
