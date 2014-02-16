@@ -1,12 +1,50 @@
 <!-- this is what owners can see -->
 <% if current_user.type == 'Owner' %>
-  <table width="500px" align="center">
+  <table width="1000px" align="center">
     <tr>
       <td>Appointments</td>
       <td>Customers</td>
       <td>Owners</td>
       <td>Pets</td>
+      <td>Receptionists</td>
       <td>Veterinarians</td>
+      <td>Sign Out</td>
+    </tr>
+  </table>
+<% end %>
+
+<!-- this is what veterinarians can see -->
+<% if current_user.type == 'Veterinarian' %>
+  <table width="1000px" align="center">
+    <tr>
+      <td>Appointments</td>
+      <td>Customers</td>
+      <td>Pets</td>
+      <td>Receptionists</td>
+      <td>Veterinarians</td>
+      <td>Sign Out</td>
+    </tr>
+  </table>
+<% end %>
+
+<!-- this is what receptionists can see -->
+<% if current_user.type == 'Receptionist' %>
+  <table width="1000px" align="center">
+    <tr>
+      <td>Appointments</td>
+      <td>Customers</td>
+      <td>Pets</td>
+      <td>Sign Out</td>
+    </tr>
+  </table>
+<% end %>
+
+<!-- this is what customers can see -->
+<% if current_user.type == 'Receptionist' %>
+  <table width="1000px" align="center">
+    <tr>
+      <td>Appointments</td>
+      <td>Pets</td>
       <td>Sign Out</td>
     </tr>
   </table>
