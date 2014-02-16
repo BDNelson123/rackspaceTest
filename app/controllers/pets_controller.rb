@@ -14,7 +14,7 @@ class PetsController < ApplicationController
 
   # GET /pets/new
   def new
-    self.custom_cancan(['Owner'])
+    self.custom_cancan(['Owner', 'Veterinarian'])
 
     @pet = Pet.new
     @customers = User.select("id,name").where(:type => "Customer")
