@@ -11,6 +11,69 @@
     </div>
   <% end %>
 
+  <!-- customer -->
+  <div>
+    <%= f.label :customer, 'Customer' %>
+    <br>
+    <%= f.select(:customer, options_from_collection_for_select(@customers, 'id', 'name', params[:id])) %>
+  </div>
+
+  <br>
+
+  <!-- name -->
+  <div>
+    <%= f.label :name, 'Name of Pet' %>
+    <br>
+    <%= f.text_field :name %>
+  </div>
+
+  <br>
+
+  <!-- type -->
+  <div>
+    <%= f.label :type, 'Type' %>
+    <br>
+    <%= f.select(:type, options_for_select([['Dog', 'Dog'], ['Cat', 'Cat']], selected: :Dog )) %>
+  </div>
+
+  <br>
+
+  <!-- breed -->
+  <div>
+    <%= f.label :breed, 'Breed of Pet' %>
+    <br>
+    <%= f.text_field :breed %>
+  </div>
+
+  <br>
+
+  <!-- age -->
+  <div>
+    <%= f.label :age, 'Age of Pet' %>
+    <br>
+    <%= f.text_field :age %>
+  </div>
+
+  <br>
+
+  <!-- weight -->
+  <div>
+    <%= f.label :weight, 'Weight of Pet' %>
+    <br>
+    <%= f.text_field :weight %>
+  </div>
+
+  <br>
+
+  <!-- date of last visit -->
+  <div>
+    <%= f.label :date, 'Date of Last Visit' %>
+    <br>
+    <%= f.date_field :date %>
+  </div>
+
+  <br>
+
   <div class="actions">
     <%= f.submit %>
   </div>
