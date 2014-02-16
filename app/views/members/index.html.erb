@@ -19,7 +19,7 @@
   </tr>
   <% for user in @users %>
     <tr>
-      <td><%= user.name %></td>
+      <td><%= link_to user.name, :controller => 'members', :action => 'show', :id => user.id %></td>
       <td><%= user.address %></td>
       <td><%= user.city %></td>
       <td><%= user.state %></td>
