@@ -1,4 +1,5 @@
 <%= form_for(@appointment) do |f| %>
+  <!-- error messages -->
   <% if @appointment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
@@ -11,6 +12,7 @@
     </div>
   <% end %>
 
+  <!-- date -->
   <div>
     <%= f.label :date, 'Date' %>
     <br>
@@ -19,14 +21,18 @@
 
   <br>
 
+  <!-- customer -->
+  <!--
   <div>
     <%= f.label :customer, 'Customer' %>
     <br>
-    <%= f.text_field :customer %>
+    <%= f.select(:customer, options_from_collection_for_select(@customers, 'id', 'name', params[:id])) %>
   </div>
 
   <br>
+  -->
 
+  <!-- pet -->
   <div>
     <%= f.label :pet, 'Pet' %>
     <br>
@@ -35,6 +41,7 @@
 
   <br>
 
+  <!-- reminder -->
   <div>
     <%= f.label :reminder, 'Reminder?' %>
     <br>
@@ -43,6 +50,7 @@
 
   <br>
 
+  <!-- reason -->
   <div>
     <%= f.label :reason, 'Reason for Visit' %>
     <br>
@@ -51,6 +59,7 @@
 
   <br>
 
+  <!-- submit -->
   <div class="actions">
     <%= f.submit %>
   </div>
