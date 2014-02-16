@@ -2,13 +2,13 @@
 <% if current_user.type == 'Owner' %>
   <table width="1000px" align="center">
     <tr>
-      <td>Appointments</td>
-      <td>Customers</td>
-      <td>Owners</td>
-      <td>Pets</td>
-      <td>Receptionists</td>
-      <td>Veterinarians</td>
-      <td>Sign Out</td>
+      <td><%= link_to "Appointments", :controller => "appointments", :action => "index" %></td>
+      <td><%= link_to "Customers", :controller => "members", :action => "index", :type => "Customer" %></td>
+      <td><%= link_to "Owners", :controller => "members", :action => "index", :type => "Owner" %></td>
+      <td><%= link_to "Pets", :controller => "pets", :action => "index" %></td>
+      <td><%= link_to "Receptionists", :controller => "members", :action => "index", :type => "Receptionist" %></td>
+      <td><%= link_to "Veterinarians", :controller => "members", :action => "index", :type => "Veterinarian" %></td>
+      <td><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></td>
     </tr>
   </table>
 <% end %>
@@ -17,12 +17,12 @@
 <% if current_user.type == 'Veterinarian' %>
   <table width="1000px" align="center">
     <tr>
-      <td>Appointments</td>
-      <td>Customers</td>
-      <td>Pets</td>
-      <td>Receptionists</td>
-      <td>Veterinarians</td>
-      <td>Sign Out</td>
+      <td><%= link_to "Appointments", :controller => "appointments", :action => "index" %></td>
+      <td><%= link_to "Customers", :controller => "members", :action => "index", :type => "Customer" %></td>
+      <td><%= link_to "Pets", :controller => "pets", :action => "index" %></td>
+      <td><%= link_to "Receptionists", :controller => "members", :action => "index", :type => "Receptionist" %></td>
+      <td><%= link_to "Veterinarians", :controller => "members", :action => "index", :type => "Veterinarian" %></td>
+      <td><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></td>
     </tr>
   </table>
 <% end %>
@@ -31,10 +31,10 @@
 <% if current_user.type == 'Receptionist' %>
   <table width="1000px" align="center">
     <tr>
-      <td>Appointments</td>
-      <td>Customers</td>
-      <td>Pets</td>
-      <td>Sign Out</td>
+      <td><%= link_to "Appointments", :controller => "appointments", :action => "index" %></td>
+      <td><%= link_to "Customers", :controller => "members", :action => "index", :type => "Customer" %></td>
+      <td><%= link_to "Pets", :controller => "pets", :action => "index" %></td>
+      <td><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></td>
     </tr>
   </table>
 <% end %>
@@ -43,9 +43,9 @@
 <% if current_user.type == 'Receptionist' %>
   <table width="1000px" align="center">
     <tr>
-      <td>Appointments</td>
-      <td>Pets</td>
-      <td>Sign Out</td>
+      <td><%= link_to "Appointments", :controller => "appointments", :action => "index" %></td>
+      <td><%= link_to "Pets", :controller => "pets", :action => "index" %></td>
+      <td><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></td>
     </tr>
   </table>
 <% end %>
