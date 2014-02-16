@@ -1,4 +1,10 @@
-<h1>Users</h1>
+<h1>
+  <% if params['type'] == nil %>
+    Customers
+  <% else %>
+    <%= params['type'] %>s
+  <% end %>
+</h1>
 
 <table>
   <tr>

@@ -14,6 +14,8 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
+    self.custom_cancan(['Receptionist'])
+
     @appointment = Appointment.new
     @customers = User.select("id,name").where(:type => "Customer")
     @pets = User.select("id,name").where(:customer => params[:id])
@@ -26,6 +28,8 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
+    self.custom_cancan(['Receptionist'])
+
     @appointment = Appointment.new(appointment_params)
 
     respond_to do |format|

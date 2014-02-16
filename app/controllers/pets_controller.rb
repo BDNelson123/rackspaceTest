@@ -14,6 +14,8 @@ class PetsController < ApplicationController
 
   # GET /pets/new
   def new
+    self.custom_cancan(['Owner'])
+
     @pet = Pet.new
     @customers = User.select("id,name").where(:type => "Customer")
   end
@@ -25,6 +27,8 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
+    self.custom_cancan(['Owner'])
+
     @pet = Pet.new(pet_params)
 
     respond_to do |format|

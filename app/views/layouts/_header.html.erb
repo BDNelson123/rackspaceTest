@@ -40,7 +40,7 @@
 <% end %>
 
 <!-- this is what customers can see -->
-<% if current_user.type == 'Receptionist' %>
+<% if current_user.type == 'Customer' %>
   <table width="1000px" align="center">
     <tr>
       <td><%= link_to "Appointments", :controller => "appointments", :action => "index" %></td>
