@@ -20,7 +20,7 @@ class PetsController < ApplicationController
       INNER JOIN 
         users user 
       ON 
-        pet.customer = user.id
+        pet.user_id = user.id
     "]
   end
 

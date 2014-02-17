@@ -24,22 +24,11 @@
 
   <br>
 
-  <!-- customer -->
-  <!--
-  <div>
-    <%= f.label :customer, 'Customer' %>
-    <br>
-    <%= f.select(:customer, options_from_collection_for_select(@customers, 'id', 'name', params[:id])) %>
-  </div>
-
-  <br>
-  -->
-
   <!-- pet -->
   <div>
     <%= f.label :pet, 'Pet' %>
     <br>
-    <%= f.select(:pet, options_from_collection_for_select(@pets, 'id', 'name')) %>
+    <%= f.select(:pet_id, options_from_collection_for_select(@pets, 'id', 'name')) %>
   </div>
 
   <br>

@@ -29,14 +29,14 @@ class MembersController < ApplicationController
     INNER JOIN 
       pets pet 
     ON 
-      appointment.pet = pet.id 
+      appointment.pet_id = pet.id 
     INNER JOIN
       users user
     ON
-      user.id = appointment.customer
+      user.id = appointment.user_id
     WHERE 
-      appointment.customer = ?", params['id']
+      appointment.user_id = ?", params['id']
     ]
-    @pets = Pet.where(:customer => params['id'])
+    @pets = Pet.where(:user_id => params['id'])
   end
 end

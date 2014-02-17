@@ -11,7 +11,7 @@ class AppointmentsController < ApplicationController
         SELECT 
           user.name as userName,
           pet.name as petName,
-          appointment.customer,
+          appointment.user_id,
           appointment.id,
           appointment.date,
           appointment.reminder,
@@ -21,18 +21,18 @@ class AppointmentsController < ApplicationController
         INNER JOIN 
           users user 
         ON 
-          appointment.customer = user.id
+          appointment.user_id = user.id
         INNER JOIN
           pets pet
         ON
-          user.id = pet.customer
+          user.id = pet.user_id
       "]
     else
       @appointments = Appointment.find_by_sql ["
           SELECT 
             user.name as userName,
             pet.name as petName,
-            appointment.customer,
+            appointment.user_id,
             appointment.id,
             appointment.date,
             appointment.reminder,
@@ -42,13 +42,13 @@ class AppointmentsController < ApplicationController
           INNER JOIN 
             users user 
           ON 
-            appointment.customer = user.id
+            appointment.user_id = user.id
           INNER JOIN
             pets pet
           ON
-            user.id = pet.customer
+            user.id = pet.user_id
           WHERE
-            appointment.customer = ?", current_user.id
+            appointment.user_id = ?", current_user.id
         ]
     end
   end
@@ -65,7 +65,7 @@ class AppointmentsController < ApplicationController
 
     @appointment = Appointment.new
     @customers = User.select("id,name").where(:type => "Customer")
-    @pets = Pet.select("id,name").where(:customer => params[:id])
+    @pets = Pet.select("id,name").where(:user_id => params[:id])
   end
 
   # GET /appointments/1/edit
@@ -74,7 +74,7 @@ class AppointmentsController < ApplicationController
     self.custom_cancan_id
 
     @customers = User.select("id,name").where(:type => "Customer")
-    @pets = Pet.select("id,name").where(:customer => params[:customerID])
+    @pets = Pet.select("id,name").where(:user_id => params[:customerID])
   end
 
   # POST /appointments

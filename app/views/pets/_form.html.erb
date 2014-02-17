@@ -11,19 +11,8 @@
     </div>
   <% end %>
 
-  <!-- customer -->
-  <!--
-  <div>
-    <%= f.label :customer, 'Customer' %>
-    <br>
-    <%= f.select(:customer, options_from_collection_for_select(@customers, 'id', 'name', params[:id])) %>
-  </div>
-
-  <br>
-  -->
-
   <!-- hidden field for user id -->
-  <%= f.hidden_field :customer, :value => params['id'] %>
+  <%= f.hidden_field :user_id, :value => params['id'] %>
 
   <!-- name -->
   <div>

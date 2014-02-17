@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140216192608) do
+ActiveRecord::Schema.define(version: 20140217151450) do
 
   create_table "appointments", force: true do |t|
     t.date    "date"
-    t.integer "pet"
-    t.integer "customer"
+    t.integer "pet_id"
+    t.integer "user_id"
     t.boolean "reminder"
     t.string  "reason"
   end
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140216192608) do
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "customer"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
