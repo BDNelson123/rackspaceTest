@@ -5,15 +5,15 @@ class PetsController < ApplicationController
   # GET /pets.json
   def index
     @pets = Pet.joins(:user).select("        
-        users.id as userID,
-        pets.id as petID,
-        users.name as userName,
-        pets.name as petName,
-        pets.type,
-        pets.breed,
-        pets.age,
-        pets.weight,
-        pets.date
+      users.id as userID,
+      pets.id as petID,
+      users.name as userName,
+      pets.name as petName,
+      pets.type,
+      pets.breed,
+      pets.age,
+      pets.weight,
+      pets.date
     ")
   end
 

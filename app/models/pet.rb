@@ -2,6 +2,7 @@ class Pet < ActiveRecord::Base
   self.inheritance_column = nil
 
   belongs_to :user
+  has_many :appointments, dependent: :destroy
 
   attr_accessible :name, :type, :breed, :age, :weight, :date, :customer
 
