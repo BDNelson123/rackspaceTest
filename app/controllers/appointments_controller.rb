@@ -4,7 +4,26 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.find_by_sql ["
+      SELECT 
+        user.name as userName,
+        pet.name as petName,
+        appointment.customer,
+        appointment.id,
+        appointment.date,
+        appointment.reminder,
+        appointment.reason
+      FROM 
+        appointments appointment 
+      INNER JOIN 
+        users user 
+      ON 
+        appointment.customer = user.id
+      INNER JOIN
+        pets pet
+      ON
+        user.id = pet.customer
+    "]
   end
 
   # GET /appointments/1

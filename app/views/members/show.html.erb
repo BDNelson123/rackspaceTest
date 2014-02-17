@@ -24,14 +24,13 @@ end
 
 <h2>Appointments</h2>
 
-<br>
-
 <table>
   <tr>
     <td><b>Date</b></td>
     <td><b>Pet</b></td>
     <td><b>Reminder</b></td>
     <td><b>Reason</b></td>
+    <td><b>Action</b></td>
   </tr>
   <% for appointment in @appointments %>
     <tr>
@@ -39,25 +38,33 @@ end
       <td><%= appointment.name %></td>
       <td><%= appointment.reminder %></td>
       <td><%= appointment.reason %></td>
+      <td>
+        <%= link_to 'Edit', edit_appointment_path(appointment) %> |
+        <%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
   <% end %>
 </table>
 
+<h2>Pets</h2>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<table>
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Type</b></td>
+    <td><b>Breed</b></td>
+    <td><b>Age</b></td>
+    <td><b>Weight</b></td>
+    <td><b>Last Visit</b></td>
+  </tr>
+  <% for pet in @pets %>
+    <tr>
+      <td><%= pet.name %></td>
+      <td><%= pet.type %></td>
+      <td><%= pet.breed %></td>
+      <td><%= pet.age %></td>
+      <td><%= pet.weight %></td>
+      <td><%= pet.date %></td>
+    </tr>
+  <% end %>
+</table>

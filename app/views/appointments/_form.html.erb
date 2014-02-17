@@ -48,8 +48,7 @@
   <div>
     <%= f.label :reminder, 'Reminder?' %>
     <br>
-    <%= radio_button_tag(:reminder, "yes") %> Yes
-    <%= radio_button_tag(:reminder, "no") %> No
+    <%= f.select(:reminder, options_for_select([['Yes', 'true'], ['No', 'false']], selected: :false )) %>
   </div>
 
   <br>
