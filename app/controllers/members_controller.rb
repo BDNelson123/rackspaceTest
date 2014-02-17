@@ -15,28 +15,15 @@ class MembersController < ApplicationController
 
   def show
     @user = User.where(:id => params['id']).first
-    @appointments = Appointment.find_by_sql ["
-    SELECT 
-      appointment.id as appointmentID,
-      appointment.date,
-      pet.name as petName,
-      appointment.reminder,
-      appointment.reason,
-      user.id as userID,
-      user.name as userName
-    FROM 
-      appointments appointment 
-    INNER JOIN 
-      pets pet 
-    ON 
-      appointment.pet_id = pet.id 
-    INNER JOIN
-      users user
-    ON
-      user.id = appointment.user_id
-    WHERE 
-      appointment.user_id = ?", params['id']
-    ]
+    @appointments = Appointment.joins(:user, :pet).select("
+      appointments.id as appointmentID,
+      appointments.date,
+      pets.name as petName,
+      appointments.reminder,
+      appointments.reason,
+      users.id as userID,
+      users.name as userName
+    ").where("appointments.user_id" => params['id'])
     @pets = Pet.where(:user_id => params['id'])
   end
 end
