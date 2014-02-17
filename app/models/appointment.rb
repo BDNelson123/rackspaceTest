@@ -13,6 +13,6 @@ class Appointment < ActiveRecord::Base
 
   def date_cannot_be_in_the_past
     errors.add(:date, "can't be in the past") if
-      expiration_date < Date.today
+      date < Date.today
   end
 end
