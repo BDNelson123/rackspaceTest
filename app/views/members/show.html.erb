@@ -1,0 +1,63 @@
+<!-- user information -->
+<h1><%= @user.name %></h1>
+
+Address: <%= @user.address %>
+<br>
+City: <%= @user.city %>
+<br>
+State: <%= @user.state %>
+<br>
+Zip: <%= @user.zip %>
+
+<br>
+
+<!-- links to create appointment or pet -->
+<%= 
+if current_user.type == 'Owner'
+  link_to "Add Pet", :controller => "pets", :action => "new", :id => params[:id], :name => @user.name
+elsif current_user.type == 'Receptionist'
+  link_to "Add Appointment", :controller => "appointments", :action => "new", :id => params[:id], :name => @user.name
+end
+%>
+
+<br>
+
+<h2>Appointments</h2>
+
+<br>
+
+<table>
+  <tr>
+    <td><b>Date</b></td>
+    <td><b>Pet</b></td>
+    <td><b>Reminder</b></td>
+    <td><b>Reason</b></td>
+  </tr>
+  <% for appointment in @appointments %>
+    <tr>
+      <td><%= appointment.date %></td>
+      <td><%= appointment.name %></td>
+      <td><%= appointment.reminder %></td>
+      <td><%= appointment.reason %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
