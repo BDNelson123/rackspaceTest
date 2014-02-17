@@ -55,13 +55,13 @@
     </div>
 
     <div>
-      <%= f.label :school, 'Veterinarian School' %>
+      <%= f.label :school, 'Veterinarian School' %> *
       <br>
       <%= f.text_field :school %>
     </div>
 
     <div>
-      <%= f.label :years, 'Years in Practice' %>
+      <%= f.label :years, 'Years in Practice' %> *
       <br>
       <%= f.text_field :years %>
     </div>
@@ -94,4 +94,10 @@
       <%= f.submit "Register" %>
     </div>
   <% end %>
+
+  <br>
+
+  <div>
+    * = Only required if registering as an owner or a veterinarian.
+  </div>
 </div>
