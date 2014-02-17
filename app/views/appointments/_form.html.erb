@@ -12,6 +12,9 @@
     </div>
   <% end %>
 
+  <!-- hidden field for user id -->
+  <%= f.hidden_field :customer, :value => params['id'] %>
+
   <!-- date -->
   <div>
     <%= f.label :date, 'Date' %>
@@ -36,7 +39,7 @@
   <div>
     <%= f.label :pet, 'Pet' %>
     <br>
-    <%= f.text_field :pet %>
+    <%= f.select(:pet, options_from_collection_for_select(@pets, 'id', 'name', params[:id])) %>
   </div>
 
   <br>
@@ -45,7 +48,8 @@
   <div>
     <%= f.label :reminder, 'Reminder?' %>
     <br>
-    <%= f.text_field :reminder %>
+    <%= radio_button_tag(:reminder, "yes") %> Yes
+    <%= radio_button_tag(:reminder, "no") %> No
   </div>
 
   <br>

@@ -22,6 +22,9 @@
   <br>
   -->
 
+  <!-- hidden field for user id -->
+  <%= f.hidden_field :customer, :value => params['id'] %>
+
   <!-- name -->
   <div>
     <%= f.label :name, 'Name of Pet' %>
