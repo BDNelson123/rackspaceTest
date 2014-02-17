@@ -14,8 +14,11 @@
     <td><b>State</b></td>
     <td><b>Zip</b></td>
     <td><b>Type</b></td>
-    <td><b>School</b></td>
-    <td><b>Years</b></td>
+    <!-- only show if user is on vets or owners page -->
+    <% if params['type'] == "Veterinarian" || params['type'] == "Owner" %>
+      <td><b>School</b></td>
+      <td><b>Years</b></td>
+    <% end %>
   </tr>
   <% for user in @users %>
     <tr>
@@ -25,8 +28,11 @@
       <td><%= user.state %></td>
       <td><%= user.zip %></td>
       <td><%= user.type %></td>
-      <td><%= user.school %></td>
-      <td><%= user.years %></td>
+      <!-- only show if user is on vets or owners page -->
+      <% if params['type'] == "Veterinarian" || params['type'] == "Owner" %>
+        <td><%= user.school %></td>
+        <td><%= user.years %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

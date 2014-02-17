@@ -6,6 +6,8 @@ class PetsController < ApplicationController
   def index
     @pets = Pet.find_by_sql ["
       SELECT 
+        user.id as userID,
+        pet.id as petID,
         user.name as userName,
         pet.name as petName,
         pet.type,

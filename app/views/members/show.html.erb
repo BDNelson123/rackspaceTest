@@ -24,47 +24,57 @@ end
 
 <h2>Appointments</h2>
 
-<table>
-  <tr>
-    <td><b>Date</b></td>
-    <td><b>Pet</b></td>
-    <td><b>Reminder</b></td>
-    <td><b>Reason</b></td>
-    <td><b>Action</b></td>
-  </tr>
-  <% for appointment in @appointments %>
+<!-- Only receptionists can view appointments -->
+<% if current_user.type == 'Receptionist' %>
+  <table>
     <tr>
-      <td><%= appointment.date %></td>
-      <td><%= appointment.petName %></td>
-      <td><%= appointment.reminder %></td>
-      <td><%= appointment.reason %></td>
-      <td>
-        <%= link_to 'Edit', :controller => "appointments", :action => "edit", :id => appointment.appointmentID, :customerID => params[:id] %> |
-        <%= link_to 'Destroy', :controller => "appointments", :action => "destroy", :id => appointment.appointmentID, data: { confirm: 'Are you sure?' } %>
-      </td>
+      <td><b>Date</b></td>
+      <td><b>Pet</b></td>
+      <td><b>Reminder</b></td>
+      <td><b>Reason</b></td>
+      <td><b>Action</b></td>
     </tr>
-  <% end %>
-</table>
+    <% for appointment in @appointments %>
+      <tr>
+        <td><%= appointment.date %></td>
+        <td><%= appointment.petName %></td>
+        <td><%= appointment.reminder %></td>
+        <td><%= appointment.reason %></td>
+        <td>
+          <%= link_to 'Edit', :controller => "appointments", :action => "edit", :id => appointment.appointmentID, :customerID => params[:id] %> |
+          <%= link_to 'Destroy', :controller => "appointments", :action => "destroy", :id => appointment.appointmentID, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  Only receptionists can view appointment information.
+<% end %>
 
 <h2>Pets</h2>
 
-<table>
-  <tr>
-    <td><b>Name</b></td>
-    <td><b>Type</b></td>
-    <td><b>Breed</b></td>
-    <td><b>Age</b></td>
-    <td><b>Weight</b></td>
-    <td><b>Last Visit</b></td>
-  </tr>
-  <% for pet in @pets %>
+<!-- Only receptionists can view appointments -->
+<% if current_user.type == 'Veterinarian' || current_user.type == 'Owner' %>
+  <table>
     <tr>
-      <td><%= pet.name %></td>
-      <td><%= pet.type %></td>
-      <td><%= pet.breed %></td>
-      <td><%= pet.age %></td>
-      <td><%= pet.weight %></td>
-      <td><%= pet.date %></td>
+      <td><b>Name</b></td>
+      <td><b>Type</b></td>
+      <td><b>Breed</b></td>
+      <td><b>Age</b></td>
+      <td><b>Weight</b></td>
+      <td><b>Last Visit</b></td>
     </tr>
-  <% end %>
-</table>
+    <% for pet in @pets %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.type %></td>
+        <td><%= pet.breed %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.weight %></td>
+        <td><%= pet.date %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  Only veterinarians and owners can view pet information.
+<% end %>

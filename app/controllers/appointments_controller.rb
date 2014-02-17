@@ -4,26 +4,53 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.find_by_sql ["
-      SELECT 
-        user.name as userName,
-        pet.name as petName,
-        appointment.customer,
-        appointment.id,
-        appointment.date,
-        appointment.reminder,
-        appointment.reason
-      FROM 
-        appointments appointment 
-      INNER JOIN 
-        users user 
-      ON 
-        appointment.customer = user.id
-      INNER JOIN
-        pets pet
-      ON
-        user.id = pet.customer
-    "]
+    self.custom_cancan(['Receptionist','Customer'])
+
+    if current_user.type == "Receptionist"
+      @appointments = Appointment.find_by_sql ["
+        SELECT 
+          user.name as userName,
+          pet.name as petName,
+          appointment.customer,
+          appointment.id,
+          appointment.date,
+          appointment.reminder,
+          appointment.reason
+        FROM 
+          appointments appointment 
+        INNER JOIN 
+          users user 
+        ON 
+          appointment.customer = user.id
+        INNER JOIN
+          pets pet
+        ON
+          user.id = pet.customer
+      "]
+    else
+      @appointments = Appointment.find_by_sql ["
+          SELECT 
+            user.name as userName,
+            pet.name as petName,
+            appointment.customer,
+            appointment.id,
+            appointment.date,
+            appointment.reminder,
+            appointment.reason
+          FROM 
+            appointments appointment 
+          INNER JOIN 
+            users user 
+          ON 
+            appointment.customer = user.id
+          INNER JOIN
+            pets pet
+          ON
+            user.id = pet.customer
+          WHERE
+            appointment.customer = ?", current_user.id
+        ]
+    end
   end
 
   # GET /appointments/1

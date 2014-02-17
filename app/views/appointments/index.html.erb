@@ -8,7 +8,9 @@
       <th>Pet</th>
       <th>Reminder</th>
       <th>Reason</th>
-      <th>Actions</th>
+      <% if current_user.type == "receptionist" %>
+        <th>Actions</th>
+      <% end %>
     </tr>
   </thead>
 
@@ -22,8 +24,10 @@
         <td><%= appointment.reason %></td>
 
         <td>
-        <%= link_to 'Edit', edit_appointment_path(appointment) %> |
-        <%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% if current_user.type == "receptionist" %>
+          <%= link_to 'Edit', edit_appointment_path(appointment) %> |
+          <%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
         </td>
       </tr>
     <% end %>

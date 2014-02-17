@@ -2,8 +2,6 @@ class MembersController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    self.custom_cancan_signin
-
     if params['type'] == nil || params['type'] == "Customer"
       @users = User.where(:type => "Customer")
     elsif params['type'] == "Receptionist"
@@ -18,26 +16,26 @@ class MembersController < ApplicationController
   def show
     @user = User.where(:id => params['id']).first
     @appointments = Appointment.find_by_sql ["
-      SELECT 
-        appointment.id as appointmentID,
-	appointment.date,
-	pet.name as petName,
-	appointment.reminder,
-	appointment.reason,
-	user.id as userID,
-	user.name as userName
-      FROM 
-	appointments appointment 
-      INNER JOIN 
-	pets pet 
-      ON 
-	appointment.pet = pet.id 
-      INNER JOIN
-	users user
-      ON
-        user.id = appointment.customer
-      WHERE 
-	appointment.customer = ?", params['id']
+    SELECT 
+      appointment.id as appointmentID,
+      appointment.date,
+      pet.name as petName,
+      appointment.reminder,
+      appointment.reason,
+      user.id as userID,
+      user.name as userName
+    FROM 
+      appointments appointment 
+    INNER JOIN 
+      pets pet 
+    ON 
+      appointment.pet = pet.id 
+    INNER JOIN
+      users user
+    ON
+      user.id = appointment.customer
+    WHERE 
+      appointment.customer = ?", params['id']
     ]
     @pets = Pet.where(:customer => params['id'])
   end
