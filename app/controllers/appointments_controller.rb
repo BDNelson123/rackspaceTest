@@ -7,49 +7,25 @@ class AppointmentsController < ApplicationController
     self.custom_cancan(['Receptionist','Customer'])
 
     if current_user.type == "Receptionist"
-      @appointments = Appointment.find_by_sql ["
-        SELECT 
-          user.name as userName,
-          pet.name as petName,
-          appointment.user_id,
-          appointment.id,
-          appointment.date,
-          appointment.reminder,
-          appointment.reason
-        FROM 
-          appointments appointment 
-        INNER JOIN 
-          users user 
-        ON 
-          appointment.user_id = user.id
-        INNER JOIN
-          pets pet
-        ON
-          user.id = pet.user_id
-      "]
+      @appointments = Appointment.joins(:user, :pet).select("
+        users.name as userName,
+        pets.name as petName,
+        appointments.user_id,
+        appointments.id,
+        appointments.date,
+        appointments.reminder,
+        appointments.reason
+      ")
     else
-      @appointments = Appointment.find_by_sql ["
-          SELECT 
-            user.name as userName,
-            pet.name as petName,
-            appointment.user_id,
-            appointment.id,
-            appointment.date,
-            appointment.reminder,
-            appointment.reason
-          FROM 
-            appointments appointment 
-          INNER JOIN 
-            users user 
-          ON 
-            appointment.user_id = user.id
-          INNER JOIN
-            pets pet
-          ON
-            user.id = pet.user_id
-          WHERE
-            appointment.user_id = ?", current_user.id
-        ]
+      @appointments = Appointment.joins(:user, :pet).select("
+        users.name as userName,
+        pets.name as petName,
+        appointments.user_id,
+        appointments.id,
+        appointments.date,
+        appointments.reminder,
+        appointments.reason
+      ").where("appointments.user_id" => current_user.id)
     end
   end
 

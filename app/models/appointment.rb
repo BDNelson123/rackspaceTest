@@ -2,6 +2,7 @@ class Appointment < ActiveRecord::Base
   self.inheritance_column = nil
 
   belongs_to :user
+  belongs_to :pet
 
   attr_accessible :date, :pet, :customer, :reminder, :reason
 
