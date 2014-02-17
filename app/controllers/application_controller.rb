@@ -20,4 +20,10 @@ class ApplicationController < ActionController::Base
       redirect_to(:controller => 'members', :action => 'index')
     end
   end
+
+  def custom_cancan_id
+    if params['id'] == nil
+      redirect_to(:controller => 'members', :action => 'index')
+    end
+  end
 end
