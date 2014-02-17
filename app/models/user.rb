@@ -17,8 +17,16 @@ class User < ActiveRecord::Base
   validates :years, presence: true, if: :register_as_owner_vet?
   validates :school, presence: true, if: :register_as_owner_vet?
   validates :code, presence: true
+  validate :code_incorrect
 
   def register_as_owner_vet?
     type == "Owner" || type == "Veterinarian"
+  end
+
+  def code_incorrect
+    @code = Code.select('code').where(:type => type).first
+
+    errors.add(:code, "was incorrect.") if
+      code.to_i != @code[:code].to_i
   end
 end
