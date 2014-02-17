@@ -15,10 +15,11 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     self.custom_cancan(['Receptionist'])
+    self.custom_cancan_id
 
     @appointment = Appointment.new
     @customers = User.select("id,name").where(:type => "Customer")
-    @pets = User.select("id,name").where(:customer => params[:id])
+    @pets = Pet.select("id,name").where(:customer => params[:id])
   end
 
   # GET /appointments/1/edit
