@@ -39,7 +39,7 @@
   <div>
     <%= f.label :pet, 'Pet' %>
     <br>
-    <%= f.select(:pet, options_from_collection_for_select(@pets, 'id', 'name', params[:id])) %>
+    <%= f.select(:pet, options_from_collection_for_select(@pets, 'id', 'name')) %>
   </div>
 
   <br>

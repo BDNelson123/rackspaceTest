@@ -4,7 +4,22 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.all
+    @pets = Pet.find_by_sql ["
+      SELECT 
+        user.name as userName,
+        pet.name as petName,
+        pet.type,
+        pet.breed,
+        pet.age,
+        pet.weight,
+        pet.date
+      FROM 
+        pets pet 
+      INNER JOIN 
+        users user 
+      ON 
+        pet.customer = user.id
+    "]
   end
 
   # GET /pets/1

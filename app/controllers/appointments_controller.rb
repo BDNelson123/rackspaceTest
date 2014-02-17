@@ -43,6 +43,11 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1/edit
   def edit
+    self.custom_cancan(['Receptionist'])
+    self.custom_cancan_id
+
+    @customers = User.select("id,name").where(:type => "Customer")
+    @pets = Pet.select("id,name").where(:customer => params[:customerID])
   end
 
   # POST /appointments

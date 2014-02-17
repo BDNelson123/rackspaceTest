@@ -3,23 +3,31 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Name</th>
+      <th>Owner</th>
+      <th>Type</th>
+      <th>Breed</th>
+      <th>Age</th>
+      <th>Weight</th>
+      <th>Last Visit</th>
     </tr>
   </thead>
 
   <tbody>
     <% @pets.each do |pet| %>
       <tr>
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= pet.petName %></td>
+        <td><%= pet.userName %></td>
+        <td><%= pet.type %></td>
+        <td><%= pet.breed %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.weight %></td>
+        <td>
+          <%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %> |
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Pet', new_pet_path %>
