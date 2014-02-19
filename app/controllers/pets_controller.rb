@@ -32,6 +32,7 @@ class PetsController < ApplicationController
 
   # GET /pets/1/edit
   def edit
+    self.custom_cancan(['Owner', 'Veterinarian'])
   end
 
   # POST /pets
