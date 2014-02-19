@@ -15,8 +15,14 @@ class Pet < ActiveRecord::Base
   validates :age, presence: true
   validates :weight, presence: true
   validates :date, presence: true
+  validate :date_cannot_be_in_the_future
 
   def type_is_dog_or_cat
     type == 'dog' || type == 'cat'
+  end
+
+  def date_cannot_be_in_the_future
+    errors.add(:date, "can't be in the future") if
+      date > Date.today
   end
 end
