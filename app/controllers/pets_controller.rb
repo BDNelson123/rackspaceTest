@@ -6,7 +6,7 @@ class PetsController < ApplicationController
   def index
     @pets = Pet.joins(:user).select("        
       users.id as userID,
-      pets.id as petID,
+      pets.id,
       users.name as userName,
       pets.name as petName,
       pets.type,

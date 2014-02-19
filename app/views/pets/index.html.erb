@@ -30,8 +30,8 @@
         <!-- onlow allow vets and owners to update and delete pets -->
         <% if current_user.type == 'Veterinarian' || current_user.type == 'Owner' %>
           <td>
-            <%= link_to 'Edit', :controller => "pets", :action => "edit", :id => pet.petID, :user_id => pet.userID %> |
-            <%= link_to 'Destroy', method: :delete, :id => pet.petID, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', :controller => "pets", :action => "edit", :id => pet.id, :user_id => pet.userID %> |
+            <%= link_to 'Delete', pet, method: :delete, :id => pet.id, :confirm => "Are you sure?" %>
           </td>
         <% end %>
       </tr>
