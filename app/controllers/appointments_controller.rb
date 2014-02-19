@@ -74,6 +74,8 @@ class AppointmentsController < ApplicationController
   # PATCH/PUT /appointments/1
   # PATCH/PUT /appointments/1.json
   def update
+    self.custom_cancan(['Receptionist'])
+
     respond_to do |format|
       if @appointment.update(appointment_params)
         format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
@@ -88,6 +90,8 @@ class AppointmentsController < ApplicationController
   # DELETE /appointments/1
   # DELETE /appointments/1.json
   def destroy
+    self.custom_cancan(['Receptionist'])
+
     @appointment.destroy
     respond_to do |format|
       format.html { redirect_to appointments_url }

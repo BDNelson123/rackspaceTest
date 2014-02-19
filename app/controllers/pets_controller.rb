@@ -38,7 +38,7 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    self.custom_cancan(['Owner'])
+    self.custom_cancan(['Owner', 'Veterinarian'])
 
     @pet = Pet.new(pet_params)
 
@@ -56,6 +56,8 @@ class PetsController < ApplicationController
   # PATCH/PUT /pets/1
   # PATCH/PUT /pets/1.json
   def update
+    self.custom_cancan(['Owner', 'Veterinarian'])
+
     respond_to do |format|
       if @pet.update(pet_params)
         format.html { redirect_to @pet, notice: 'Pet was successfully updated.' }
@@ -70,6 +72,8 @@ class PetsController < ApplicationController
   # DELETE /pets/1
   # DELETE /pets/1.json
   def destroy
+    self.custom_cancan(['Owner', 'Veterinarian'])
+
     @pet.destroy
     respond_to do |format|
       format.html { redirect_to pets_url }
