@@ -4,12 +4,8 @@ class MembersController < ApplicationController
   def index
     if params['type'] == nil || params['type'] == "Customer"
       @users = User.where(:type => "Customer")
-    elsif params['type'] == "Receptionist"
-      @users = User.where(:type => "Receptionist")
-    elsif params['type'] == "Veterinarian"
-      @users = User.where(:type => "Veterinarian")
-    elsif params['type'] == "Owner"
-      @users = User.where(:type => "Owner")
+    else
+      @users = User.where(:type => params['type'])
     end
   end
 
