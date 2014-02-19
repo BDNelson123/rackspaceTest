@@ -13,7 +13,6 @@
     <td><b>City</b></td>
     <td><b>State</b></td>
     <td><b>Zip</b></td>
-    <td><b>Type</b></td>
     <!-- only show if user is on vets or owners page -->
     <% if params['type'] == "Veterinarian" || params['type'] == "Owner" %>
       <td><b>School</b></td>
@@ -27,7 +26,6 @@
       <td><%= user.city %></td>
       <td><%= user.state %></td>
       <td><%= user.zip %></td>
-      <td><%= user.type %></td>
       <!-- only show if user is on vets or owners page -->
       <% if params['type'] == "Veterinarian" || params['type'] == "Owner" %>
         <td><%= user.school %></td>
