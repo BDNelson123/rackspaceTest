@@ -24,10 +24,10 @@
         <td><%= appointment.reason %></td>
 
         <td>
-	<% if current_user.type == "receptionist" %>
-          <%= link_to 'Edit', edit_appointment_path(appointment) %> |
-          <%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %>
-	<% end %>
+	        <% if current_user.type == "Receptionist" %>
+            <%= link_to 'Edit', edit_appointment_path(appointment) %> |
+            <%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	        <% end %>
         </td>
       </tr>
     <% end %>
