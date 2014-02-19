@@ -12,7 +12,7 @@ class MembersController < ApplicationController
   def show
     @user = User.where(:id => params['id']).first
     @appointments = Appointment.joins(:user, :pet).select("
-      appointments.id as appointmentID,
+      appointments.id,
       appointments.date,
       pets.name as petName,
       appointments.reminder,

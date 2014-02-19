@@ -41,8 +41,8 @@ end
         <td><%= appointment.reminder %></td>
         <td><%= appointment.reason %></td>
         <td>
-          <%= link_to 'Edit', :controller => "appointments", :action => "edit", :id => appointment.appointmentID, :user_id => params[:id] %> |
-          <%= link_to 'Destroy', :controller => "appointments", :action => "destroy", :id => appointment.appointmentID, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', :controller => "appointments", :action => "edit", :id => appointment.id, :user_id => params[:id] %> |
+          <%= link_to 'Delete', appointment, :id => appointment.id, :method => :delete, :confirm => "Are you sure you wanted to delete this?" %>
         </td>
       </tr>
     <% end %>
@@ -75,7 +75,7 @@ end
         <td><%= pet.date %></td>
         <td>
           <%= link_to 'Edit', :controller => "pets", :action => "edit", :id => pet.id, :user_id => pet.user_id %> |
-          <%= link_to 'Destroy', method: :delete, :id => pet.id, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete', pet, :id => pet.id, :method => :delete, :confirm => "Are you sure you wanted to delete this?" %>
         </td>
       </tr>
     <% end %>

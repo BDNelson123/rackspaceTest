@@ -75,7 +75,7 @@ class PetsController < ApplicationController
 
     @pet.destroy
     respond_to do |format|
-      format.html { redirect_to pets_url }
+      format.html { redirect_to :controller => "members", :action => "show", :id => @pet.user_id }
       format.json { head :no_content }
     end
   end

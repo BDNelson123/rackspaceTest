@@ -37,11 +37,9 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     self.custom_cancan(['Receptionist'])
-    self.custom_cancan_id
 
     @appointment = Appointment.new
-    @customers = User.select("id,name").where(:type => "Customer")
-    @pets = Pet.select("id,name").where(:user_id => params[:id])
+    @pets = Pet.select("id,name").where(:user_id => params[:user_id])
   end
 
   # GET /appointments/1/edit
@@ -50,7 +48,7 @@ class AppointmentsController < ApplicationController
     self.custom_cancan_id
 
     @customers = User.select("id,name").where(:type => "Customer")
-    @pets = Pet.select("id,name").where(:user_id => params[:customerID])
+    @pets = Pet.select("id,name").where(:user_id => params[:user_id])
   end
 
   # POST /appointments
