@@ -25,7 +25,6 @@ class PetsController < ApplicationController
   # GET /pets/new
   def new
     self.custom_cancan(['Owner', 'Veterinarian'])
-    self.custom_cancan_id
 
     @pet = Pet.new
     @customers = User.select("id,name").where(:type => "Customer")
@@ -60,7 +59,7 @@ class PetsController < ApplicationController
 
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Pet was successfully updated.' }
+        format.html { redirect_to :controller => "members", :action => "show", :id => @pet.user_id, notice: 'Pet was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
