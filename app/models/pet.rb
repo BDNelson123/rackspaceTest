@@ -4,8 +4,6 @@ class Pet < ActiveRecord::Base
   belongs_to :user
   has_many :appointments, dependent: :destroy
 
-  attr_accessible :name, :type, :breed, :age, :weight, :date, :user_id
-
   validates :name, presence: true
   validates :name, length: { maximum: 35 }
   validates :type, presence: true

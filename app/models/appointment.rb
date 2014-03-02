@@ -4,8 +4,6 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
   belongs_to :pet
 
-  attr_accessible :date, :pet_id, :user_id, :reminder, :reason, :id
-
   validates :date, presence: true
   validate :date_cannot_be_in_the_past
   validates :pet_id, presence: true
