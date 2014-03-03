@@ -13,6 +13,8 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'faker'
+  gem 'accept_values_for'
+  gem 'shoulda-matchers'
 end
 
 group :doc do
